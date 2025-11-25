@@ -87,13 +87,13 @@
     z-index: 9999;
 ">
     <div style="
-        background: #fff;
+        background: #070707ff;
         width: 600px;
         border-radius: 6px;
         padding: 25px;
-        color: #333;
+        color: #ffffffff;
     ">
-        <h3 style="margin:0 0 20px 0;">Select a question</h3>
+        <h3 style="margin:0 0 20px 0;">wybierz pytanie</h3>
 
         <div style="
             border: 1px solid #ddd;
@@ -105,18 +105,19 @@
         ">
 
             <!-- aktywne pytanie -->
-            <button class="q-btn q-active" data-q="1"
-                style="background:#f57c00; color:white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
-                🔓 1
-            </button>
+       <button class="q-btn q-active" data-q="1"
+    style="background:	#660000; color: white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
+    🔓 1
+</button>
+
 
             <button class="q-btn q-active" data-q="2"
-                style="background:#f57c00; color:white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
+               style="background:	#660000; color:white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
                 🔓 2
             </button>
 
             <button class="q-btn q-active" data-q="3"
-                style="background:#f57c00; color:white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
+                style="background:	#660000; color:white; padding:10px 18px; border-radius:6px; border:none; cursor:pointer; font-weight:bold;">
                 🔓 3
             </button>
 
@@ -137,7 +138,7 @@
             <button id="closeQuestionModal" style="
                 background:#ddd; border:none; padding:8px 20px;
                 border-radius:6px; cursor:pointer; color:#333;
-            ">Back</button>
+            ">powrót</button>
         </div>
     </div>
 </div>
@@ -156,62 +157,61 @@
     document.querySelectorAll(".q-active").forEach(btn => {
         btn.onclick = function () {
             const q = this.dataset.q;
-           window.location.href = "http://127.0.0.1:8000/sesja/pytanie/" + q;
+      window.location.href = "/sesja/{{ $number }}/pytanie/" + q;
+
+
 
         };
     });
 </script>
 
-    {{-- Kontener główny --}}
-    <div class="ui raised padded text container segment panel-dark">
-
-        {{-- Ikona + numer --}}
-        <div style="display:flex; align-items:center; margin-bottom:1em;">
-            <i class="big th list icon title-icon"></i>
-            <span style="font-size:20px; margin-left:10px; color:#81a0ff;">
-                {{ $number ?? '1' }}
-            </span>
-        </div>
-
+    
         <hr>
 
-        {{-- Treść zadania --}}
+      
         <div id="question_text" style="font-size:17px; line-height:1.6;">
 
-            {!! $content ?? '
-            <ol>
-                <li>Utwórz nowy folder o nazwie "leadsite" i otwórz go za pomocą Visual Studio Code.</li>
-                <li>Zainicjuj nowe repozytorium Git w tym folderze.</li>
-                <li>Rozpakuj materiały z LeadSite.zip i otwórz stronę za pomocą VSC Live Server.</li>
-                <li>Upewnij się, że Twoja główna gałąź nazywa się main, używając: git branch -M main.</li>
-                <li>Na koniec zatwierdź zmiany z komunikatem "Początkowy commit".</li>
-            </ol>
+           
+  <header><b>Najważniejsze zasady robienia prac domowych</b></header>
+
+    <ol>
+    <li>Zorganizuj czas i miejsce
+        <span>
+            Przygotuj spokojne miejsce do pracy i ustal stałą porę odrabiania lekcji.
+        </span>
+    </li>
+
+    <li>Zaczynaj od trudniejszych zadań
+        <span>
+            Wypoczęty mózg lepiej radzi sobie z trudnymi zadaniami — proste zostaw na później.
+        </span>
+    </li>
+
+    <li>Czytaj polecenia uważnie
+        <span>
+            Każde słowo polecenia jest ważne — upewnij się, że rozumiesz, o co chodzi.
+        </span>
+    </li>
+
+    <li>Rób przerwy i sprawdzaj pracę
+        <span>
+            Rób krótkie przerwy, aby utrzymać koncentrację, a na koniec sprawdź zadania.
+        </span>
+    </li>
+</ol>
 
             <p style="margin-top:20px;">
                 Proszę pamiętać:
                 Do tego ćwiczenia NIE instaluj Breeze.
                 Możesz również użyć domyślnej bazy danych SQLite bez korzystania z bazy danych MySQL.
             </p>
-            ' !!}
+         
 
         </div>
 
-        {{-- Przycisk "Hide Code" --}}
-        <div style="margin-top:30px;">
-            <button class="ui button btn-purple" id="codeformshow">Hide Code</button>
-        </div>
-
-    </div>
+   
 
 
-    {{-- Modale --}}
-    <div class="ui small modal sessioninfo"></div>
-    <div class="ui small modal finishesession"></div>
-    <div class="ui small modal submitedquestion"></div>
-    <div class="ui small modal networkerror"></div>
-    <div class="ui small modal qattention"></div>
-
-    <div class="ui dimmer modals page transition hidden"></div>
 
 </body>
 </html>

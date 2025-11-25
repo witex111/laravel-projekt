@@ -103,7 +103,8 @@
 
    <div class="sesja">
     @foreach($sesja as $index => $s)
-        <a href="{{ route('sesja.pokaz', ['id' => $index]) }}"
+       <a href="{{ route('sesja.show', ['id' => $index]) }}"
+
            class="session-link {{ $s['alert'] ? 'alert' : '' }}">
             {{ $s['name'] }}
         </a>

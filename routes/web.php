@@ -5,4 +5,8 @@ use App\Http\Controllers\SesjaController;
 
 Route::get('/', [SesjaController::class, 'index'])->name('console');
 
-Route::get('/sesja/{id}', [SesjaController::class, 'show'])->name('sesja.pokaz');
+Route::get('/sesja/{id}', [SesjaController::class, 'showSesja'])->name('sesja.show');
+
+Route::get('/sesja/{sesjaId}/pytanie/{pytanieId}', 
+    [SesjaController::class, 'showPytanie'])->name('sesja.pytanie');
+
